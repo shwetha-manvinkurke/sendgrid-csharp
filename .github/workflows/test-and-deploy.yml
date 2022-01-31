@@ -33,6 +33,8 @@ jobs:
 
   deploy:
     name: Deploy
+    if: success() && github.ref_type == 'tag'
+    needs: [ test ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sendgrid-csharp
